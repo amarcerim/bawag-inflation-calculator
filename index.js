@@ -131,7 +131,6 @@ function formatInputData() {
     } else if (numeral(document.getElementById("savings-input").value).value() % 1 != 0) {
         document.getElementById("savings-input").value = Math.floor(document.getElementById("savings-input").value)
     }
-    console.log(numeral(document.getElementById("savings-input").value).value())
     var formattedData = numeral(document.getElementById("savings-input").value).format('0,0');
     document.getElementById("savings-input").value = formattedData + " €";
 }
