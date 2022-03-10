@@ -128,9 +128,10 @@ function formatInputData() {
         document.getElementById("savings-input").value = 1;
     } else if (document.getElementById("savings-input").value > 10000000) {
         document.getElementById("savings-input").value = 10000000;
-    } else if (document.getElementById("savings-input").value % 1 != 0) {
+    } else if (numeral(document.getElementById("savings-input").value).value() % 1 != 0) {
         document.getElementById("savings-input").value = Math.floor(document.getElementById("savings-input").value)
     }
+    console.log(numeral(document.getElementById("savings-input").value).value())
     var formattedData = numeral(document.getElementById("savings-input").value).format('0,0');
     document.getElementById("savings-input").value = formattedData + " €";
 }
