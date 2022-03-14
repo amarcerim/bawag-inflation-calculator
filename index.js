@@ -24,7 +24,7 @@ var inflationData = {
 }
 
 function updateSliderStyles() {
-    const slider = document.getElementById("loan-period")
+    const slider = document.getElementById("year-slider")
     const min = slider.min
     const max = slider.max
     const value = slider.value
@@ -58,7 +58,7 @@ function addEventListeners() {
     })
 
 
-    document.getElementById("loan-period").addEventListener("input", () => {
+    document.getElementById("year-slider").addEventListener("input", () => {
         syncSliderWithInput()
         syncInputWithSlider()
         if (validateForm()) {
@@ -72,7 +72,7 @@ function addEventListeners() {
 }
 
 function handleValues() {
-    let iterationKey = numeral(document.getElementById("loan-period").value).value();
+    let iterationKey = numeral(document.getElementById("year-slider").value).value();
     let lostAmount;
     let sumOfLostAmount = 0;
     let currentAmount = numeral(document.getElementById("savings-input").value).value();
@@ -94,8 +94,8 @@ function handleValues() {
 }
 
 function syncSliderWithInput() {
-    document.getElementById("year-input").value = document.getElementById("loan-period").value
-    document.getElementById("loan-period").value = document.getElementById("year-input").value
+    document.getElementById("year-input").value = document.getElementById("year-slider").value
+    document.getElementById("year-slider").value = document.getElementById("year-input").value
 }
 
 function syncInputWithSlider(){
@@ -103,7 +103,7 @@ function syncInputWithSlider(){
     if(year >= 2000 && year <= 2021)
     {
         document.getElementById("yearLabel").innerHTML = "";
-        document.getElementById("loan-period").value = year;
+        document.getElementById("year-slider").value = year;
         handleValues()
     }
     else
@@ -115,10 +115,9 @@ function syncInputWithSlider(){
     updateSliderStyles()
 }
 
-//TODO: rename loan-period id to year-slider
 function setDefaultValues() {
     document.getElementById("year-input").value = 2015;
-    document.getElementById("loan-period").value = 2015;
+    document.getElementById("year-slider").value = 2015;
     document.getElementById("savings-input").value = 1000;
     formatInputData();
 }
